@@ -5,7 +5,6 @@ import java.util.*;
 import java.lang.Math;
 
 public class TempConverter {
-
   private static Scanner input = new Scanner(System.in);
 
   public static void main(String[] args) {
@@ -13,16 +12,19 @@ public class TempConverter {
   }
 
   private static void convert(Scanner scanner) {
-    String line;
-    while (!(line = scanner.nextLine().trim()).isEmpty()) {
-      char finalChar = line.toUpperCase().charAt(line.length() - 1);
-      if (finalChar == 'C') {
-        double celsius = parseTemperature(line);
-        System.out.printf("%.3fF%n", celsiusToFahrenheit(celsius));
-      } else if (finalChar == 'F') {
-        double fahrenheit = parseTemperature(line);
-        System.out.printf("%.3fC%n", fahrenheitToCelsius(fahrenheit));
+    try {
+      String line;
+      while (!(line = scanner.nextLine().trim()).isEmpty()) {
+        char finalChar = line.toUpperCase().charAt(line.length() - 1);
+        if (finalChar == 'C') {
+          double celsius = parseTemperature(line);
+          System.out.printf("%.3fF%n", celsiusToFahrenheit(celsius));
+        } else if (finalChar == 'F') {
+          double fahrenheit = parseTemperature(line);
+          System.out.printf("%.3fC%n", fahrenheitToCelsius(fahrenheit));
+        }
       }
+    } catch (NoSuchElementException expected) {
     }
   }
 
